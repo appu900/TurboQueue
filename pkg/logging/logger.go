@@ -2,6 +2,7 @@ package logging
 
 import (
 	"os"
+	"time"
 
 	"github.com/rs/zerolog"
 )
@@ -11,7 +12,8 @@ type Logger struct {
 }
 
 func NewLogger() *Logger {
+	consoleWriter := zerolog.ConsoleWriter{Out: os.Stdout, TimeFormat: time.RFC3339}
 	return &Logger{
-		zerolog.New(os.Stdout).With().Timestamp().Logger(),
+		zerolog.New(consoleWriter).With().Timestamp().Logger(),
 	}
 }

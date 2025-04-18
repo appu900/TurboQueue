@@ -3,6 +3,7 @@ package api
 import (
 	"context"
 	"net/http"
+
 	"github.com/appu900/TurboQueue/config"
 	"github.com/appu900/TurboQueue/internal/model"
 	"github.com/appu900/TurboQueue/internal/store"
@@ -18,9 +19,10 @@ type Server struct {
 }
 
 func NewServer(cfg *config.Config) *Server {
+	router := SetupRouter(cfg)
 	newServerInstance := &Server{
 		cfg:      cfg,
-		router:   gin.Default(),
+		router:   router,
 		msgChans: make(map[string][]chan *model.Message),
 	}
 	return newServerInstance
@@ -30,6 +32,7 @@ func NewServer(cfg *config.Config) *Server {
 func (s *Server) Start(ctx context.Context) error {
 	s.httpServer = &http.Server{
 		Addr: ":" + s.cfg.Port,
+		Handler: s.router,
 	}
 	return s.httpServer.ListenAndServe()
 }
