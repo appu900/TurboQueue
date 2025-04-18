@@ -1,0 +1,15 @@
+port: "8080"
+db:
+  host: "localhost"
+  port: 5432
+  user: "postgres"
+  password: "password"
+  name: "qstash"
+redis:
+  addr: "localhost:6379"
+  password: ""
+workers: 5
+max_retries: 3
+topic_partitions: 3
+metrics_port: "9090"
+api_key: "your-secret-api-key"
