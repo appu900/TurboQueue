@@ -1,6 +1,6 @@
 # TurboQueue
 
-A scalable, production-ready messaging and scheduling service built in Go, designed to showcase distributed systems expertise for FAANG SDE-1 roles.
+A scalable, production-ready messaging and scheduling service built in Go
 
 ## Overview
 This project replicates QStash with advanced features like replica queues, topic partitioning, and real-time subscriptions, demonstrating Go concurrency, distributed systems, and production-grade practices.
